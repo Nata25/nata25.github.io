@@ -1,0 +1,64 @@
+<!-- In <head> add scripts and styles to your html page -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <script
+    id="rwc-embed-script"
+    async
+    src="https://chat.qa.onereach.ai/lib/richWebChat.umd.min.js"
+  ></script>
+  <link rel="stylesheet" href="https://chat.qa.onereach.ai/lib/richWebChat.css"/>
+  
+  <!-- insert code below into <body> -->
+  <div id="rwc"></div>
+  <script>
+    const scriptEl = document.getElementById('rwc-embed-script');
+  
+    scriptEl.addEventListener('load', initEmbedChat);
+    initEmbedChat();
+  
+    function initEmbedChat() {
+      var richWebChat = window.richWebChat;
+      if (window.isRwcEmbedLoaded || !richWebChat) {
+        return;
+      }
+      
+      window.isRwcEmbedLoaded = true;
+  
+      var RWC = richWebChat.default;
+      var app = new RWC({
+        container: '#rwc', // DOM element selector where chat will be inserted
+        chatUrl: 'https://chat.qa.onereach.ai/VhBiKYesRSWBvfZZq6y-Vg/07uncpo', // url of your chat. required
+        
+        appearance: {
+          blurredBackground: false,
+          resizeable: false,
+          draggable: false,
+          saveChatSize: true,
+          preloadInBackground: false
+        },
+        
+        widget: {
+          position: 'bottom-right',
+          animation: 'pulse', // 'pulse', 'ring', 'zoom',
+          color: '#005fb1',
+          logoUrl: '',
+          revealDelay: 0,
+          openDelay: 15000,
+        },
+        
+        invitation: {
+          closeable: false,
+          imageUrl: '',
+          message: '',
+          buttonLabel: '',
+          appearDelay: 5000,
+          soundLocation: '',
+        },
+        
+        pageData: {
+          fname: 'foo'
+        }
+      })
+    };
+  </script>
